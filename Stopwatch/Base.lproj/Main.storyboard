@@ -222,7 +222,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00:00.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuR-tF-HMo">
                                 <rect key="frame" x="0.0" y="185" width="390" height="108"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="85"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
