@@ -25,11 +25,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startStopButton.setImage(UIImage(named: "start.png"), for: .normal)
+        //앱을 실행하면 startStopButton의 이미지를 start로 바꾼다.
         resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
-//        startStopButton.setTitleColor(UIColor.green, for: .normal)
-//        //앱을 실행하면 startStopButton의 색을 초록색으로 한다.
-//        resetLapButton.setTitleColor(UIColor.gray, for: .normal)
-//        //앱을 실행하면 resetButton의 색을 회색으로 한다.
+        //앱을 실행하면 resetLapButton의 이미지를 reset으로 바꾼다.
+        
     }
     @IBAction func resetTapped(_ sender: UIButton) {
         if(timerCounting) {//타이머가 시간을 계산중이라면 랩
@@ -37,8 +36,7 @@ class ViewController: UIViewController {
             print(lapCount)
         } else { //타이머가 시간을 계산중이 아니라면 재설정
             resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
-//            resetLapButton.setTitle("재설정", for: .normal)
-//            resetLapButton.setTitleColor(UIColor.gray, for: .normal)
+            //버튼을 누르면 resetLapButton의 이미지를 reset으로 바꾼다.
             let alert = UIAlertController(title: "타이머 재설정", message: "타이머를 재설정 하시겠습니까?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: { (_) in //재설정 취소버튼
@@ -49,8 +47,7 @@ class ViewController: UIViewController {
                 self.timer.invalidate() //타이머를 중지하는 timer.invalidate()호출 invalidate: 무효화, 타이머가 다시 실행되는 것을 중지하고 런 루프에서 제거를 요청
                 self.TimerLabel.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
                 self.startStopButton.setImage(UIImage(named: "start.png"), for: .normal)
-//                self.startStopButton.setTitle("시작", for: .normal)
-//                self.startStopButton.setTitleColor(UIColor.green, for: .normal)
+                //버튼을 누르면 resetLapButton의 이미지를 start으로 바꾼다.
                 self.lap1.text = " "
                 self.lap2.text = " "
                 self.lap3.text = " "
@@ -71,22 +68,18 @@ class ViewController: UIViewController {
         if(timerCounting) //타이머가 시간을 계산중이라면
                 {
             resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
-//            resetLapButton.setTitle("재설정", for: .normal)
-//            resetLapButton.setTitleColor(UIColor.gray, for: .normal)
+            //버튼을 누르면 resetLapButton의 이미지를 reset으로 바꾼다.
                     timerCounting = false //timerCounting은 false
                     timer.invalidate() //사용자가 startStop버튼을 탭하면 타이머를 중지하는 timer.invalidate()호출
             startStopButton.setImage(UIImage(named: "start.png"), for: .normal)
-//                    startStopButton.setTitle("시작", for: .normal) //타이머가 시간을 계산중이라면 startStopButton의 타이틀은 START
-//                    startStopButton.setTitleColor(UIColor.green, for: .normal) //타이머가 시간을 계산중이라면 startStopButton의 색을 초록색
+            //버튼을 누르면 startStopButton의 이미지를 start으로 바꾼다.
                 }else //타이머가 시간을 계산중이 아니라면
                 {
                     resetLapButton.setImage(UIImage(named: "lap.png"), for: .normal)
-//                    resetLapButton.setTitle("랩", for: .normal)
-//                    resetLapButton.setTitleColor(UIColor.gray, for: .normal)
+                    //버튼을 누르면 resetLapButton의 이미지를 lap으로 바꾼다.
                     timerCounting = true //timerCounting은 true
                     startStopButton.setImage(UIImage(named: "stop.png"), for: .normal)
-//                    startStopButton.setTitle("중단", for: .normal) ////타이머가 시간을 계산중이 아니라면 startStopButton의 타이틀은 STOP
-//                    startStopButton.setTitleColor(UIColor.red, for: .normal) //타이머가 시간을 계산중이 아니 라면 startStopButton의 색을 빨간색
+                    //버튼을 누르면 resetLapButton의 이미지를 stop으로 바꾼다.
                     timer = Timer.scheduledTimer(timeInterval: 0.0157, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
                     //scheduledTimer: 타이머를 만들고 기본모드의 현재 실행 루프에서 타이머를 예약합니다.
                     //timeInterval:타이머 실행 간격 - 0.0157초 / target: 함수 selector가 호출되어야 하는 클래스 인스턴스 - 자신 / selector:  타이머가 실행될 때 호출 할 함수, / userInfo : selector 에게 제공되는 데이터가 있는 dictionary / repeats : 참일 경우 타이머는 무효화될 때까지 반복적으로 다시 예약, 거짓일 경우 타이머가 실행된 후 타이머가 무효화
@@ -102,7 +95,7 @@ class ViewController: UIViewController {
         // 랩을 만들어주는 부분 - 랩은 7까지 가면 다시 1로 돌아온다.
         switch lapCount % 5 {
         case 1:
-            lap1.text = "랩 1                                                " + timeString //위에서 선언한 랩1의 text 값에 timerString을 넣어준다.
+            lap1.text = "랩 1                                                 " + timeString //위에서 선언한 랩1의 text 값에 timerString을 넣어준다.
         case 2:
             lap2.text = "랩 2                                                " + timeString //위에서 선언한 랩1의 text 값에 timerString을 넣어준다.
         case 3:
