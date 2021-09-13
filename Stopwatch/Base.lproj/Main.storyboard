@@ -55,8 +55,20 @@
                     <view key="view" contentMode="scaleToFill" id="wv8-HF-SW8">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="세계시계" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raH-em-VSC">
+                                <rect key="frame" x="125.66666666666667" y="398" width="138.66666666666663" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qXP-00-Cyq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="raH-em-VSC" firstAttribute="centerY" secondItem="wv8-HF-SW8" secondAttribute="centerY" id="Iix-om-UM9"/>
+                            <constraint firstItem="raH-em-VSC" firstAttribute="centerX" secondItem="wv8-HF-SW8" secondAttribute="centerX" id="gzR-hJ-tbg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gN8-Jp-iub"/>
                 </viewController>
@@ -128,8 +140,20 @@
                     <view key="view" contentMode="scaleToFill" id="Noy-Oh-czs">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0v-2G-1Mg">
+                                <rect key="frame" x="143" y="398" width="104" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="KYD-gU-bhv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Z0v-2G-1Mg" firstAttribute="centerY" secondItem="Noy-Oh-czs" secondAttribute="centerY" id="48z-nv-3bW"/>
+                            <constraint firstItem="Z0v-2G-1Mg" firstAttribute="centerX" secondItem="Noy-Oh-czs" secondAttribute="centerX" id="8UK-nP-eRs"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jz0-Dl-Wgc"/>
                 </viewController>
@@ -233,8 +257,20 @@
                     <view key="view" contentMode="scaleToFill" id="iak-sk-Zmc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알람" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-PI-041">
+                                <rect key="frame" x="160.33333333333334" y="398" width="69.333333333333343" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ua0-9M-rlZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vea-PI-041" firstAttribute="centerY" secondItem="iak-sk-Zmc" secondAttribute="centerY" id="KoQ-rD-aKH"/>
+                            <constraint firstItem="Vea-PI-041" firstAttribute="centerX" secondItem="iak-sk-Zmc" secondAttribute="centerX" id="hw0-Yj-Xjk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="v7e-tb-NCe"/>
                 </viewController>

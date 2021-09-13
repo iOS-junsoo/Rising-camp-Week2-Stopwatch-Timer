@@ -28,7 +28,47 @@ class ViewController: UIViewController {
         //앱을 실행하면 startStopButton의 이미지를 start로 바꾼다.
         resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
         //앱을 실행하면 resetLapButton의 이미지를 reset으로 바꾼다.
+        // 스톱워치 주의 사항!!
+        let alert1 = UIAlertController(title: "🎉환영합니다🎉", message: "스톱워치(Stopwatch)는 특정 사건의 경과 시간을 측정하는 것을 목적으로 한 시계입니다. - 사용해주셔서 감사합니다. -", preferredStyle: .alert)
+        alert1.addAction(UIAlertAction(title: "나가기", style: .cancel, handler: { (_) in //재설정 취소버튼
+        exit(0) //앱 강제종료 버튼
+        }))
+        alert1.addAction(UIAlertAction(title: "들어가기", style: .default, handler: { (_) in
+        }))
+        self.present(alert1, animated: true, completion: nil)
         
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let alert2 = UIAlertController(title: "※주의※", message: "이대로 화면을 나가면 스톱워치가 멈추게 됩니다. 계속하시겠습니까?", preferredStyle: .actionSheet)
+        alert2.addAction(UIAlertAction(title: "계속하기", style: .cancel, handler: { (_) in //재설정 취소버튼
+        
+        }))
+        alert2.addAction(UIAlertAction(title: "돌아가기", style: .default, handler: { (_) in
+            
+        }))
+        self.present(alert2, animated: true, completion: nil)
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        let alert2 = UIAlertController(title: "🏃🏼‍♂️이어하기🏃🏼‍♂️", message: "이전에 실행했던 타이머가 이미 있습니다. 이어서 하시겠습니까?", preferredStyle: .actionSheet)
+        alert2.addAction(UIAlertAction(title: "다시하기", style: .cancel, handler: { (_) in //재설정 취소버튼
+            self.count = 0 //상승하는 count를 다시 0으로 설정
+            self.timer.invalidate() //타이머를 중지하는 timer.invalidate()호출 invalidate: 무효화, 타이머가 다시 실행되는 것을 중지하고 런 루프에서 제거를 요청
+            self.TimerLabel.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
+            self.startStopButton.setImage(UIImage(named: "start.png"), for: .normal)
+            //버튼을 누르면 resetLapButton의 이미지를 start으로 바꾼다.
+            self.lap1.text = " "
+            self.lap2.text = " "
+            self.lap3.text = " "
+            self.lap4.text = " "
+            self.lap5.text = " "
+            self.lapCount = 1
+        }))
+        alert2.addAction(UIAlertAction(title: "이어하기", style: .default, handler: { (_) in
+            
+        }))
+        self.present(alert2, animated: true, completion: nil)
     }
     @IBAction func resetTapped(_ sender: UIButton) {
         if(timerCounting) {//타이머가 시간을 계산중이라면 랩
@@ -37,7 +77,7 @@ class ViewController: UIViewController {
         } else { //타이머가 시간을 계산중이 아니라면 재설정
             resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
             //버튼을 누르면 resetLapButton의 이미지를 reset으로 바꾼다.
-            let alert = UIAlertController(title: "타이머 재설정", message: "타이머를 재설정 하시겠습니까?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "[타이머 재설정]", message: "타이머를 재설정 하시겠습니까?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: { (_) in //재설정 취소버튼
             //do nothing
