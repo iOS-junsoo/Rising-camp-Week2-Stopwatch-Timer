@@ -164,7 +164,7 @@
         <!--View Controller-->
         <scene sceneID="Zug-56-Wtt">
             <objects>
-                <viewController id="gca-Sq-kul" customClass="ViewController" customModule="Stopwatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StopwatchVC" id="gca-Sq-kul" customClass="ViewController" customModule="Stopwatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rZf-qS-Bc3">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,6 +249,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76D-UT-3LM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044.6153846153845" y="1463.7440758293837"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PSl-Ig-11G">
+            <objects>
+                <viewController storyboardIdentifier="welcomeVC" id="6UL-CO-enk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BXO-bu-hoi">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎉스톱워치에 오신것을 환영합니다!!🎉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJY-mj-6gO">
+                                <rect key="frame" x="16" y="408" width="358" height="28"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제작자 - Dante" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEq-Hb-457">
+                                <rect key="frame" x="137" y="675" width="117" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="Wyj-5e-jOC"/>
+                                    <constraint firstAttribute="height" constant="23" id="v9O-fA-fNk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="siX-e7-3NA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wJY-mj-6gO" firstAttribute="centerY" secondItem="BXO-bu-hoi" secondAttribute="centerY" id="7yi-db-KEg"/>
+                            <constraint firstItem="SEq-Hb-457" firstAttribute="top" secondItem="siX-e7-3NA" secondAttribute="top" constant="631" id="A2v-YU-XGp"/>
+                            <constraint firstItem="wJY-mj-6gO" firstAttribute="centerX" secondItem="BXO-bu-hoi" secondAttribute="centerX" id="Vbt-X9-UIz"/>
+                            <constraint firstItem="SEq-Hb-457" firstAttribute="leading" secondItem="siX-e7-3NA" secondAttribute="leading" constant="137" id="bZs-xX-NOI"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v4F-AG-Uhn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033.8461538461538" y="2133.4123222748813"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="K00-3a-DJI">

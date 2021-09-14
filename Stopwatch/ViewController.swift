@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var count:Int = 0
     var timerCounting:Bool = false
     var lapCount:Int = 1 //다음 랩으로 넘어가게 만든 변수
+    var falg = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,25 +38,35 @@ class ViewController: UIViewController {
             self.lap4.text = " "
             self.lap5.text = " "
             self.lapCount = 1
-        let alert1 = UIAlertController(title: "🎉환영합니다🎉", message: "스톱워치(Stopwatch)는 특정 사건의 경과 시간을 측정하는 것을 목적으로 한 시계입니다. - 사용해주셔서 감사합니다. -", preferredStyle: .alert)
-        alert1.addAction(UIAlertAction(title: "나가기", style: .cancel, handler: { (_) in //재설정 취소버튼
-        exit(0) //앱 강제종료 버튼
-        }))
-        alert1.addAction(UIAlertAction(title: "들어가기", style: .default, handler: { (_) in
-        }))
-        self.present(alert1, animated: true, completion: nil)
+        print("flag1: \(falg)")
+        if falg == 1 {
+        let storyboard: UIStoryboard? = UIStoryboard(name: "Main", bundle: Bundle.main)
+                
+                // 뷰 객체 얻어오기 (storyboard ID로 ViewController구분)
+                guard let uvc = storyboard?.instantiateViewController(identifier: "welcomeVC") else {
+                    return
+                }
+                
+                // 화면 전환 애니메이션 설정
+                uvc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                
+                self.present(uvc, animated: true)
+            falg = 0
+            print("flag2: \(falg)")
+        }
         
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if count > 0 {
         let alert2 = UIAlertController(title: "※주의※", message: "이대로 화면을 나가면 스톱워치가 멈추게 됩니다. 계속하시겠습니까?", preferredStyle: .actionSheet)
         alert2.addAction(UIAlertAction(title: "계속하기", style: .cancel, handler: { (_) in //재설정 취소버튼
-            self.timer.invalidate()
+            self.timer.invalidate() //화면을 나가면 타이머가 멈춤.
         }))
         alert2.addAction(UIAlertAction(title: "돌아가기", style: .default, handler: { (_) in
-            
         }))
         self.present(alert2, animated: true, completion: nil)
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
