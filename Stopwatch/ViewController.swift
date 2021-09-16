@@ -64,6 +64,7 @@ class ViewController: UIViewController {
             self.timer.invalidate() //화면을 나가면 타이머가 멈춤.
         }))
         alert2.addAction(UIAlertAction(title: "돌아가기", style: .default, handler: { (_) in
+            self.tabBarController?.selectedIndex = 2
         }))
         self.present(alert2, animated: true, completion: nil)
         }

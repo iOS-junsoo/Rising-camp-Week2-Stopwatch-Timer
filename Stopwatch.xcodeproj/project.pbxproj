@@ -13,6 +13,7 @@
 		99567E3926EF3EB3002C5156 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99567E3726EF3EB3002C5156 /* Main.storyboard */; };
 		99567E3B26EF3EB4002C5156 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99567E3A26EF3EB4002C5156 /* Assets.xcassets */; };
 		99567E3E26EF3EB4002C5156 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99567E3C26EF3EB4002C5156 /* LaunchScreen.storyboard */; };
+		9976535126F1E83800616933 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9976535026F1E83800616933 /* TimerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		99567E3A26EF3EB4002C5156 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99567E3D26EF3EB4002C5156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99567E3F26EF3EB4002C5156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9976535026F1E83800616933 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				99567E3126EF3EB3002C5156 /* AppDelegate.swift */,
 				99567E3326EF3EB3002C5156 /* SceneDelegate.swift */,
 				99567E3526EF3EB3002C5156 /* ViewController.swift */,
+				9976535026F1E83800616933 /* TimerViewController.swift */,
 				99567E3726EF3EB3002C5156 /* Main.storyboard */,
 				99567E3A26EF3EB4002C5156 /* Assets.xcassets */,
 				99567E3C26EF3EB4002C5156 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9976535126F1E83800616933 /* TimerViewController.swift in Sources */,
 				99567E3626EF3EB3002C5156 /* ViewController.swift in Sources */,
 				99567E3226EF3EB3002C5156 /* AppDelegate.swift in Sources */,
 				99567E3426EF3EB3002C5156 /* SceneDelegate.swift in Sources */,
