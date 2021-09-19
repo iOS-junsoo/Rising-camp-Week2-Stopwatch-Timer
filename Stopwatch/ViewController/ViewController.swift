@@ -86,8 +86,26 @@ class ViewController: UIViewController {
             self.lap5.text = " "
             self.lapCount = 1
         }))
-        alert2.addAction(UIAlertAction(title: "이어하기", style: .default, handler: { (_) in
-            
+            alert2.addAction(UIAlertAction(title: "이어하기", style: .default, handler: { [self] (_) in
+            if(self.timerCounting) //타이머가 시간을 계산중이라면
+                    {
+                self.resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
+                //버튼을 누르면 resetLapButton의 이미지를 reset으로 바꾼다.
+                self.timerCounting = false //timerCounting은 false
+                self.timer.invalidate() //사용자가 startStop버튼을 탭하면 타이머를 중지하는 timer.invalidate()호출
+                self.startStopButton.setImage(UIImage(named: "start.png"), for: .normal)
+                //버튼을 누르면 startStopButton의 이미지를 start으로 바꾼다.
+                    }else //타이머가 시간을 계산중이 아니라면
+                    {
+                        self.resetLapButton.setImage(UIImage(named: "lap.png"), for: .normal)
+                        //버튼을 누르면 resetLapButton의 이미지를 lap으로 바꾼다.
+                        self.timerCounting = true //timerCounting은 true
+                        self.startStopButton.setImage(UIImage(named: "stop.png"), for: .normal)
+                        //버튼을 누르면 resetLapButton의 이미지를 stop으로 바꾼다.
+                        timer = Timer.scheduledTimer(timeInterval: 0.0157, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
+                        //scheduledTimer: 타이머를 만들고 기본모드의 현재 실행 루프에서 타이머를 예약합니다.
+                        //timeInterval:타이머 실행 간격 - 0.0157초 / target: 함수 selector가 호출되어야 하는 클래스 인스턴스 - 자신 / selector:  타이머가 실행될 때 호출 할 함수, / userInfo : selector 에게 제공되는 데이터가 있는 dictionary / repeats : 참일 경우 타이머는 무효화될 때까지 반복적으로 다시 예약, 거짓일 경우 타이머가 실행된 후 타이머가 무효화
+                    }
         }))
         self.present(alert2, animated: true, completion: nil)
         }

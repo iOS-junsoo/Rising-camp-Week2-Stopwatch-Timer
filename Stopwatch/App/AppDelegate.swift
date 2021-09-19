@@ -17,6 +17,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+//    func applicationWillResignActive(_ application: UIApplication) {
+//        <#code#>
+//    }
+//    
+//    func applicationDidEnterBackground(_ application: UIApplication) {
+//      
+//    }
+//    
+//    func applicationWillEnterForeground(_ application: UIApplication) {
+//        <#code#>
+//    }
+//    
+//    func applicationDidBecomeActive(_ application: UIApplication) {
+//        <#code#>
+//    }
+//    
+//    func applicationWillTerminate(_ application: UIApplication) {
+//        <#code#>
+//    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
