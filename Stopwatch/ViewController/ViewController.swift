@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  Stopwatch
-//
-//  Created by 준수김 on 2021/09/13.
-//
-
+//스톱워치 VC
 import UIKit
 
 class ViewController: UIViewController {
@@ -23,8 +17,11 @@ class ViewController: UIViewController {
     var lapCount:Int = 1 //다음 랩으로 넘어가게 만든 변수
     var falg = 1
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
             resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
             //버튼을 누르면 resetLapButton의 이미지를 reset으로 바꾼다.
             self.count = 0 //상승하는 count를 다시 0으로 설정

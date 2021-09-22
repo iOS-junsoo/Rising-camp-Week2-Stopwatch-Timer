@@ -1,13 +1,8 @@
-//
-//  TimerViewController.swift
-//  Stopwatch
-//
-//  Created by 준수김 on 2021/09/15.
-//
+//타이머 VC
 
 import UIKit
 
-class TimerViewController: UIViewController {
+class TimerViewController: UIViewController{
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var start: UIButton!
@@ -25,6 +20,7 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         start.setTitleColor(UIColor.green, for: .normal)
         reset.setTitleColor(UIColor.gray, for: .normal)
         reset.setTitle("RESET", for: .normal)
@@ -80,6 +76,7 @@ class TimerViewController: UIViewController {
         
         shapeLayer.add(basicAnimation, forKey: "urSoBasic")
         }
+        
     }
     @IBAction func resetClick(_ sender: UIButton) {
         reset.setTitle("RESET", for: .normal)
@@ -109,6 +106,7 @@ class TimerViewController: UIViewController {
             let time = secondsToHoursMinutesSeconds(seconds: count) //증가하는 count 값을 secondsToHoursMinutesSeconds함수에 넣고 출력값을 time에 저장
             let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2) //makeTimeString함수에 time의 첫번째 값을 hours, 두번째 값을 minutes, 세번째 값을 seconds에 넣는다.
             label.text = timeString //위에서 선언한 TimerLabel의 text 값에 timerString을 넣어준다.
+          
         } else {
             timerCounting = false
             timer.invalidate()
@@ -117,6 +115,7 @@ class TimerViewController: UIViewController {
             labelHour = 0
             labelMin = 0
             labelSec = 0
+            
         }
             
         }
@@ -138,13 +137,13 @@ class TimerViewController: UIViewController {
     
    
     // MARK: PLUSBUTTON
-    @IBAction func plusHour(_ sender: UIButton) {
+    @IBAction func plusHour(_ sender: UIButton) { //시간 + 버튼을 눌렀을 때
         count += 3600
         labelHour += 1
         self.label.text = self.makeTimeString(hours: labelHour, minutes: labelMin, seconds: labelSec)
     }
     
-    @IBAction func plusMin(_ sender: UIButton) {
+    @IBAction func plusMin(_ sender: UIButton) { //분 + 버튼을 눌렀을 때
         count += 60
         if labelMin < 59 {
             labelMin += 1
@@ -155,7 +154,7 @@ class TimerViewController: UIViewController {
         self.label.text = self.makeTimeString(hours: labelHour, minutes: labelMin, seconds: labelSec)
         }
     }
-    @IBAction func plusSec(_ sender: UIButton) {
+    @IBAction func plusSec(_ sender: UIButton) { //초 + 버튼을 눌렀을 때
         count += 1
         if labelSec < 59 {
         labelSec += 1
@@ -168,7 +167,7 @@ class TimerViewController: UIViewController {
     }
     
     // MARK: MINUSBUTTON
-    @IBAction func minusHour(_ sender: UIButton) {
+    @IBAction func minusHour(_ sender: UIButton) { //시간 - 버튼을 눌렀을 때
         
         if count > 3599 {
         count -= 3600
@@ -176,7 +175,7 @@ class TimerViewController: UIViewController {
         self.label.text = self.makeTimeString(hours: labelHour, minutes: labelMin, seconds: labelSec)
         }
     }
-    @IBAction func minusMin(_ sender: UIButton) {
+    @IBAction func minusMin(_ sender: UIButton) { //분 - 버튼을 눌렀을 때
         if count > 59 {
         count -= 60
             if labelMin > 0 {
@@ -189,7 +188,7 @@ class TimerViewController: UIViewController {
             }
         }
     }
-    @IBAction func minusSec(_ sender: UIButton) {
+    @IBAction func minusSec(_ sender: UIButton) { //초 - 버튼을 눌렀을 때
         if count > 0 {
         count -= 1
             if labelSec > 0 {

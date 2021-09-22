@@ -5,37 +5,43 @@
 //  Created by 준수김 on 2021/09/13.
 //
 
+//var formatter_time = DateFormatter()
+//formatter_time.dateFormat = "HH:mm"
+//var current_time_string = formatter_time.string(from: Date())
+//print(current_time_string)
+
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var formatter_time = DateFormatter()
+    var totalCount = 0
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
 
 //    func applicationWillResignActive(_ application: UIApplication) {
-//        <#code#>
-//    }
-//    
-//    func applicationDidEnterBackground(_ application: UIApplication) {
-//      
-//    }
-//    
-//    func applicationWillEnterForeground(_ application: UIApplication) {
-//        <#code#>
-//    }
-//    
-//    func applicationDidBecomeActive(_ application: UIApplication) {
-//        <#code#>
-//    }
-//    
-//    func applicationWillTerminate(_ application: UIApplication) {
-//        <#code#>
-//    }
+//
+//    } 
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("2")
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print("3")
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("4")
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("5")
+    }
     
     // MARK: UISceneSession Lifecycle
 
