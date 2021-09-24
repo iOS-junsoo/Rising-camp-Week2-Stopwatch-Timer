@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "reset.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "reset.jpeg",
+      "filename" : "reset@2x.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "reset@3x.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }

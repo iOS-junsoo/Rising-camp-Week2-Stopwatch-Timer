@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "stop.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "stop.jpeg",
+      "filename" : "stop@2x.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "stop@3x.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }
