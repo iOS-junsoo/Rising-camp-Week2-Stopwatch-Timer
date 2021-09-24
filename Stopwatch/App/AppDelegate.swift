@@ -22,27 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
-
-//    func applicationWillResignActive(_ application: UIApplication) {
-//
-//    } 
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        print("2")
-    }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        print("3")
-    }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        print("4")
-    }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        print("5")
+        var formatter_time = DateFormatter()
+        formatter_time.dateFormat = "HH시 mm분 ss초"
+        var current_time_string = formatter_time.string(from: Date())
+        Constant.exitText = current_time_string
+        print("사용자가 어플을 강제 종료한 시각은 \(Constant.exitText)입니다.")
     }
-    
+
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

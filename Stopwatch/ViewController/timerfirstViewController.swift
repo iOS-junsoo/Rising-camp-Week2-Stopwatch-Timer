@@ -1,87 +1,110 @@
 import UIKit
-
-class timerfirstViewController: UIViewController {
-
-    var count = -1
+var tray = ""
+var space = " - "
+class timerfirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return self.data.count
+    }
     
-    @IBOutlet weak var label0: UILabel!
-    @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var label2: UILabel!
-    @IBOutlet weak var label3: UILabel!
-    @IBOutlet weak var label4: UILabel!
-    @IBOutlet weak var label5: UILabel!
-    @IBOutlet weak var label6: UILabel!
-    @IBOutlet weak var label7: UILabel!
-    @IBOutlet weak var labelTime0: UILabel!
-    @IBOutlet weak var labelTime1: UILabel!
-    @IBOutlet weak var labelTime2: UILabel!
-    @IBOutlet weak var labelTime3: UILabel!
-    @IBOutlet weak var labelTime4: UILabel!
-    @IBOutlet weak var labelTime5: UILabel!
-    @IBOutlet weak var labelTime6: UILabel!
-    @IBOutlet weak var labelTime7: UILabel!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let text: String = self.data[indexPath.row]
+        cell.textLabel?.text = text
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "[Custom timer]"
+    }
+    //<편집>
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            // 왼쪽에 만들기
+        
+        let like = UIContextualAction(style: .normal, title: "Edit") { [self] (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+                self.data[0] = self.textField.text! + space + tray
+                self.textField.text = ""
+                self.timeLabel.text = ""
+                tray = ""
+                self.tableView.reloadSections(IndexSet(0...0), with: UITableView.RowAnimation.automatic)
+                
+                success(true)
+            }
+            like.backgroundColor = .systemTeal
+        return UISwipeActionsConfiguration(actions:[like])
+    }
+    
+    //<삭제>
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           
+           if editingStyle == .delete {
+               
+               data.remove(at: indexPath.row)
+               tableView.deleteRows(at: [indexPath], with: .fade)
+               
+           } else if editingStyle == .insert {
+               
+           }
+       }
+    
+    @IBOutlet weak var tableView: UITableView!
+    let collIdentifier: String = "cell"
+    var data: [String] = []
+    
+    @IBOutlet weak var textField: UITextField!
+    
+    //<생성>
+    @IBAction func touchAddButton(_ sender: UIButton) {
+        data.append(String(textField.text! + space + tray))
+        self.textField.text = ""
+        self.timeLabel.text = ""
+        tray = ""
+        print(data)
+        self.tableView.reloadSections(IndexSet(0...0), with: UITableView.RowAnimation.automatic)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-    }
-    @IBAction func didTapButton() {
-        let vc = storyboard?.instantiateViewController(identifier: "SecondVC") as! timerSecondViewController
-        vc.modalPresentationStyle = .fullScreen
-        //Titel을 나타내는 Label
-        vc.completionHandler = { text in
-            switch self.count {
-            case 0:
-                self.label0.text = text
-            case 1:
-                self.label1.text = text
-            case 2:
-                self.label2.text = text
-            case 3:
-                self.label3.text = text
-            case 4:
-                self.label4.text = text
-            case 5:
-                self.label5.text = text
-            case 6:
-                self.label6.text = text
-            case 7:
-                self.label7.text = text
-            default:
-                print("errer")
-            }
-//            self.label\(count).text = text
-        }
-        
-        //Time을 나타내는 Label
-        vc.completionHandler1 = { text in
-            switch self.count {
-            case 0:
-                self.labelTime0.text = text
-            case 1:
-                self.labelTime1.text = text
-            case 2:
-                self.labelTime2.text = text
-            case 3:
-                self.labelTime3.text = text
-            case 4:
-                self.labelTime4.text = text
-            case 5:
-                self.labelTime5.text = text
-            case 6:
-                self.labelTime6.text = text
-            case 7:
-                self.labelTime7.text = text
-            default:
-                print("errer")
-            }
-//            self.label\(count).text = text
-        }
-        present(vc, animated: true)
-        
-        count += 1
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var timePicker: UIDatePicker!
+    var timeInt : Int = Int()
+    @IBAction func didTimePickerValueChanged(_ sender : UIDatePicker){
+           self.timeInt = Int(self.timePicker.countDownDuration) / 60
+           
+           if timeInt >= 60{
+               let hour : Int = timeInt / 60
+               let minit : Int = timeInt % 60
+               
+               if hour < 10 {
+                   tray = "\(hour) 시간 \(minit) 분"
+                   self.timeLabel.text = "\(hour) 시간 \(minit) 분"
+               }else{
+                   tray = "\(hour) 시간 \(minit) 분"
+                   self.timeLabel.text = "\(hour) 시간 \(minit) 분"
+               }
+               
+               if minit == 0{
+                   if hour < 10 {
+                       tray = "\(hour) 시간 00 분"
+                       self.timeLabel.text = "\(hour) 시간 00 분"
+               }else{
+                   tray = "\(hour) 시간 00 분"
+                   self.timeLabel.text = "\(hour) 시간 00 분"
+               }
+               }
+           }else{
+               tray = "\(timeInt) 분"
+               self.timeLabel.text = "\(timeInt) 분"
+           }
+           
+       }
+    
+
 
 }

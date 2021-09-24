@@ -2,7 +2,7 @@
 
 import UIKit
 
-class TimerViewController: UIViewController{
+class TimerViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var start: UIButton!
@@ -102,12 +102,13 @@ class TimerViewController: UIViewController{
     }
     @objc func timerCounter() -> Void  {
         if count > 0 {
-            count = count - 1 //이 함수가 호출될 때마다 count + 1
+            count = count - 1 //이 함수가 호출될 때마다 count - 1
             let time = secondsToHoursMinutesSeconds(seconds: count) //증가하는 count 값을 secondsToHoursMinutesSeconds함수에 넣고 출력값을 time에 저장
             let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2) //makeTimeString함수에 time의 첫번째 값을 hours, 두번째 값을 minutes, 세번째 값을 seconds에 넣는다.
             label.text = timeString //위에서 선언한 TimerLabel의 text 값에 timerString을 넣어준다.
-          
-        } else {
+          print(count)
+        }
+         else {
             timerCounting = false
             timer.invalidate()
             start.setTitle("START", for: .normal)
@@ -115,7 +116,15 @@ class TimerViewController: UIViewController{
             labelHour = 0
             labelMin = 0
             labelSec = 0
-            
+             let alert4 = UIAlertController(title: "⏰타이머⏰", message: "타이머가 종료되었습니다.", preferredStyle: .alert)
+             
+             alert4.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { (_) in //재설정 취소버튼
+             //do nothing
+             }))
+             
+             
+             
+             self.present(alert4, animated: true, completion: nil)
         }
             
         }

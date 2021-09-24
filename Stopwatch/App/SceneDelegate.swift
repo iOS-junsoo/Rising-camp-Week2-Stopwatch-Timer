@@ -15,17 +15,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var formatter_time2 = DateFormatter()
     var current_time_string1 = ""
     var current_time_string2 = ""
-    var totalCount = 0
     var count1 = 0
     var count2 = 0
+    
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        //print("1")
-        
+        print("1")
     
     }
     
@@ -44,8 +43,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             current_time_string1 = formatter_time1.string(from: Date())
             print("앱 실행시각: \(current_time_string1)")
             count1 = Int(current_time_string1)!
-            totalCount = count1 - count2
-            print("앱을 나갔다가 다시 들어온 시간차이 : \(totalCount)")
+            Constant.totalCount = count1 - count2
+            print("앱을 나갔다가 다시 들어온 시간차이 : \(Constant.totalCount)")
+            Constant.flagCount = 1
+            
         }
         
     }
@@ -55,7 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
-        //print("sceneWillResignActive")
+        print("sceneWillResignActive")
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -66,12 +67,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print("앱 백그라운드 시각: \(current_time_string2)")
         count2 = Int(current_time_string2)!
         flag = 1
+        Constant.flagCount = 1
+        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         //print("sceneDidDisconnect")
+        
     }
-
+    
     
 
 

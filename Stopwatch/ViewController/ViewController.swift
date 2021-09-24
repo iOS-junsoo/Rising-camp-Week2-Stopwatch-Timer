@@ -17,11 +17,8 @@ class ViewController: UIViewController {
     var lapCount:Int = 1 //다음 랩으로 넘어가게 만든 변수
     var falg = 1
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
             resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
             //버튼을 누르면 resetLapButton의 이미지를 reset으로 바꾼다.
             self.count = 0 //상승하는 count를 다시 0으로 설정
@@ -35,7 +32,8 @@ class ViewController: UIViewController {
             self.lap4.text = " "
             self.lap5.text = " "
             self.lapCount = 1
-        print("flag1: \(falg)")
+        
+        //print("flag1: \(falg)")
         if falg == 1 {
         let storyboard: UIStoryboard? = UIStoryboard(name: "Main", bundle: Bundle.main)
                 
@@ -49,7 +47,7 @@ class ViewController: UIViewController {
                 
                 self.present(uvc, animated: true)
             falg = 0
-            print("flag2: \(falg)")
+            //print("flag2: \(falg)")
         }
         
     }
@@ -64,6 +62,7 @@ class ViewController: UIViewController {
             self.tabBarController?.selectedIndex = 2
         }))
         self.present(alert2, animated: true, completion: nil)
+        
         }
         
     }
@@ -110,11 +109,11 @@ class ViewController: UIViewController {
     @IBAction func resetTapped(_ sender: UIButton) {
         if(timerCounting) {//타이머가 시간을 계산중이라면 랩
             lapCount += 1
-            print(lapCount)
+            //print(lapCount)
         } else { //타이머가 시간을 계산중이 아니라면 재설정
             resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
             //버튼을 누르면 resetLapButton의 이미지를 reset으로 바꾼다.
-            let alert = UIAlertController(title: "[타이머 재설정]", message: "타이머를 재설정 하시겠습니까?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "[스톱워치 재설정]", message: "스톱워치를 재설정 하시겠습니까?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: { (_) in //재설정 취소버튼
             //do nothing
@@ -160,15 +159,22 @@ class ViewController: UIViewController {
                     timer = Timer.scheduledTimer(timeInterval: 0.0157, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
                     //scheduledTimer: 타이머를 만들고 기본모드의 현재 실행 루프에서 타이머를 예약합니다.
                     //timeInterval:타이머 실행 간격 - 0.0157초 / target: 함수 selector가 호출되어야 하는 클래스 인스턴스 - 자신 / selector:  타이머가 실행될 때 호출 할 함수, / userInfo : selector 에게 제공되는 데이터가 있는 dictionary / repeats : 참일 경우 타이머는 무효화될 때까지 반복적으로 다시 예약, 거짓일 경우 타이머가 실행된 후 타이머가 무효화
+                    
                 }
     }
     @objc func timerCounter() -> Void
         {
             count = count + 1 //이 함수가 호출될 때마다 count + 1
+            if Constant.flagCount == 1 { //Constant.totalCount를 조건문 없이 그냥 더하면 타이머가 계속 증가하기 떄문에 그 문제를 방지하는 것
+                count += Constant.totalCount * 55
+            }
+            Constant.flagCount = 0
             let time = secondsToHoursMinutesSeconds(seconds: count) //증가하는 count 값을 secondsToHoursMinutesSeconds함수에 넣고 출력값을 time에 저장
             let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2) //makeTimeString함수에 time의 첫번째 값을 hours, 두번째 값을 minutes, 세번째 값을 seconds에 넣는다.
             TimerLabel.text = timeString //위에서 선언한 TimerLabel의 text 값에 timerString을 넣어준다.
-        
+            //print("앱을 나갔다가 다시 들어온 시간차이 : \(Constant.totalCount)")
+            //print((count % 3600) / 60)
+            //print(Constant.totalCount)
         // 랩을 만들어주는 부분 - 랩은 7까지 가면 다시 1로 돌아온다.
         switch lapCount % 5 {
         case 1:
@@ -188,6 +194,7 @@ class ViewController: UIViewController {
         }
     func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) //초에서 시간 : 분 : 초로 바꾸어주는 함수
         {
+            
             return ((seconds / 3600), ((seconds % 3600) / 60),((seconds % 3600) % 60)) //다음과 같은 연산으로 초를 이용해서 시간, 분, 초를 출력
         }
         
