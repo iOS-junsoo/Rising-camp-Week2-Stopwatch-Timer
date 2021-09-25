@@ -58,7 +58,7 @@ class timerfirstViewController: UIViewController, UITableViewDataSource, UITable
         self.textField.text = ""
         self.timeLabel.text = ""
         tray = ""
-        print(data)
+        //print(data)
         self.tableView.reloadSections(IndexSet(0...0), with: UITableView.RowAnimation.automatic)
     }
     

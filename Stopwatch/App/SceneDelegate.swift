@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        print("1")
+        //print("1")
     
     }
     
@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             formatter_time1.dateFormat = "HHmmss" //현재 시분초 출력
             
             current_time_string1 = formatter_time1.string(from: Date())
-            print("앱 실행시각: \(current_time_string1)")
+            print("앱 실행 시각: \(current_time_string1)")
             count1 = Int(current_time_string1)!
             Constant.totalCount = count1 - count2
             print("앱을 나갔다가 다시 들어온 시간차이 : \(Constant.totalCount)")
@@ -49,14 +49,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         }
         
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        
-    }
-    
-    func sceneWillResignActive(_ scene: UIScene) {
-        print("sceneWillResignActive")
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -70,15 +62,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         Constant.flagCount = 1
         
     }
-    
-    func sceneDidDisconnect(_ scene: UIScene) {
-        //print("sceneDidDisconnect")
-        
-    }
-    
-    
-
-
 }
 
 //https://ppomelo.tistory.com/18 참고 사이트

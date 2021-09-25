@@ -32,8 +32,6 @@ class ViewController: UIViewController {
             self.lap4.text = " "
             self.lap5.text = " "
             self.lapCount = 1
-        
-        //print("flag1: \(falg)")
         if falg == 1 {
         let storyboard: UIStoryboard? = UIStoryboard(name: "Main", bundle: Bundle.main)
                 
@@ -46,12 +44,12 @@ class ViewController: UIViewController {
                 uvc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                 
                 self.present(uvc, animated: true)
-            falg = 0
-            //print("flag2: \(falg)")
+                falg = 0
         }
         
     }
     override func viewWillDisappear(_ animated: Bool) {
+        //View가 사라지기 직전에 Alert 호출
         super.viewWillDisappear(animated)
         if count > 0 {
         let alert2 = UIAlertController(title: "※주의※", message: "이대로 화면을 나가면 스톱워치가 멈추게 됩니다. 계속하시겠습니까?", preferredStyle: .actionSheet)
@@ -67,9 +65,11 @@ class ViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        //View가 나타나기 직전에 Alert 호출
         if count > 0 {
-        let alert2 = UIAlertController(title: "🏃🏼‍♂️이어하기🏃🏼‍♂️", message: "이전에 실행했던 타이머가 이미 있습니다. 이어서 하시겠습니까?", preferredStyle: .actionSheet)
-        alert2.addAction(UIAlertAction(title: "다시하기", style: .cancel, handler: { (_) in //재설정 취소버튼
+            let alert2 = UIAlertController(title: "🏃🏼‍♂️이어하기🏃🏼‍♂️", message: "이전에 실행했던 타이머가 이미 있습니다. 이어서 하시겠습니까?", preferredStyle: .actionSheet)
+            //[다시하기]
+            alert2.addAction(UIAlertAction(title: "다시하기", style: .cancel, handler: { (_) in //재설정 취소버튼
             self.count = 0 //상승하는 count를 다시 0으로 설정
             self.timer.invalidate() //타이머를 중지하는 timer.invalidate()호출 invalidate: 무효화, 타이머가 다시 실행되는 것을 중지하고 런 루프에서 제거를 요청
             self.TimerLabel.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
@@ -82,9 +82,10 @@ class ViewController: UIViewController {
             self.lap5.text = " "
             self.lapCount = 1
         }))
+            //[이어하기]
             alert2.addAction(UIAlertAction(title: "이어하기", style: .default, handler: { [self] (_) in
             if(self.timerCounting) //타이머가 시간을 계산중이라면
-                    {
+            {
                 self.resetLapButton.setImage(UIImage(named: "reset.png"), for: .normal)
                 //버튼을 누르면 resetLapButton의 이미지를 reset으로 바꾼다.
                 self.timerCounting = false //timerCounting은 false

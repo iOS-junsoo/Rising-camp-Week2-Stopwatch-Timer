@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         formatter_time.dateFormat = "HH시 mm분 ss초"
         var current_time_string = formatter_time.string(from: Date())
         Constant.exitText = current_time_string
-        print("사용자가 어플을 강제 종료한 시각은 \(Constant.exitText)입니다.")
+        print("⚠️사용자가 어플을 강제 종료한 시각은 \(Constant.exitText)입니다.⚠️")
     }
 
     // MARK: UISceneSession Lifecycle

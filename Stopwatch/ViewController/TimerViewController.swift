@@ -106,7 +106,7 @@ class TimerViewController: UIViewController {
             let time = secondsToHoursMinutesSeconds(seconds: count) //증가하는 count 값을 secondsToHoursMinutesSeconds함수에 넣고 출력값을 time에 저장
             let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2) //makeTimeString함수에 time의 첫번째 값을 hours, 두번째 값을 minutes, 세번째 값을 seconds에 넣는다.
             label.text = timeString //위에서 선언한 TimerLabel의 text 값에 timerString을 넣어준다.
-          print(count)
+          //print(count)
         }
          else {
             timerCounting = false
